@@ -1,0 +1,36 @@
+Name: "Nom"
+Picture: "Photo"
+Quantity: "Quantité"
+Price: "Prix"
+Save: "Sauvegarder"
+
+nav:
+  panier: "Panier"
+  produit: "Produits"
+
+produit:
+  titre: "Liste des produits"
+  titreForm: "Ajouter un produit"
+  picture: "Photo"
+  name: "Nom"
+  quantity: "Quantité"
+  price: "Prix"
+  delete: "Le produit vient d'être supprimé"
+
+panier:
+  titre: "Contenu du Panier"
+  name: "Nom"
+  quantity: "Quantité"
+  montant: "Montant"
+  added: "le produit a bien été ajouté au panier"
+  number: "Liste du ou des produit(s)"
+  noproduit: "Il n'y a aucun produit dans le panier"
+  total: "Prix total = "
+  supprimer: "Le produit a été retiré du panier."
+  passupprimer: "Erreur : Le produit n'a pas pu être retiré du panier."
+  poursupprimer: "Supprimer"
+  acheter: "Vous avez bien éffectué l'achat !"
+  pasacheter: "L'achat n'a pas pû être effectué."
+  pouracheter: "Acheter"
+  dejaacheter: "Déjà acheté"
+  produitnom: " produit"

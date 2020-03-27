@@ -1,0 +1,36 @@
+Name: "Name"
+Picture: "Picture"
+Quantity: "Quantity"
+Price: "Price"
+Save: "Save"
+
+nav:
+  panier: "Basket"
+  produit: "Products"
+
+produit:
+  titre: "Product List"
+  titreForm: "Add a product"
+  picture: "Picture"
+  name: "Name"
+  quantity: "Quantity"
+  price: "Price"
+  delete: "The product has just been deleted"
+
+panier:
+  titre: "Contents of the basket"
+  name: "Name"
+  quantity: "Quantity"
+  montant: "Amount"
+  added: "The product has been added to cart"
+  number: "Products list on the Basket"
+  noproduit: "There are no products in the cart"
+  total: "Total price = "
+  supprimer: "The product has been removed from the cart."
+  passupprimer: "Error: The product could not be removed from the basket."
+  poursupprimer: "Delete"
+  acheter: "You made the purchase!"
+  pasacheter: "The purchase could not be completed."
+  pouracheter: "Buy"
+  dejaacheter: "Already bought"
+  produitnom: " product"

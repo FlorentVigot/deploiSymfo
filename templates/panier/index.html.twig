@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!
+{% endblock %}
+
+{% block body %}
+<style>
+	.example-wrapper {
+		margin: 1em auto;
+		max-width: 800px;
+		width: 95%;
+		font: 18px / 1.5 sans-serif;
+	}
+	.example-wrapper code {
+		background: #F5F5F5;
+		padding: 2px 6px;
+	}
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="/">{{'nav.panier'|trans}}</a>
+	<a class="navbar-brand" href="/produit">{{'nav.produit'|trans}}</a>
+</nav>
+<div class="example-wrapper">
+	<h1>
+		{{ 'panier.titre'|trans }}
+	</h1>
+	{# Si il y a des produits dans le panier #}
+	{% if panier is not empty %}
+		{% set state = 0 %}
+		{# La Somme d'un produit * quantité #}
+		{% set price_total_quantity = 0 %}
+		{# Le prix de tous les articles commandés #}
+		{% set price_total = 0 %}
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">{{'panier.name'|trans}}
+					</th>
+					<th scope="col">{{'panier.quantity'|trans}}
+					</th>
+					<th scope="col">{{'panier.montant'|trans}}
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{# On cherche les différents articles dans le panier #}
+				{% for article in panier %}
+					{% set state = article.state %}
+					<tr>
+						<td>
+							<a href="{{ path('un_produit', {'id':article.id}) }}">{{ article.produit.name }}</a>
+						</td>
+						<td>{{ article.quantity }}</td>
+						<td>
+							{% set price_total_quantity = article.quantity * article.produit.price %}
+							{{ price_total_quantity}}€</td>
+						<td>
+							<a type="button" class="btn btn-danger" href="{{path('delete_produit_from_panier',{'id':article.id})}}">{{'panier.poursupprimer'|trans({'name':article.produit.name})}}</a>
+						</td>
+						{% set price_total = price_total + price_total_quantity %}
+					</tr>
+				</p>
+			</tbody>
+		{% endfor %}
+		{# Pour avoir le nombre de produit dans le panier #}
+		<td>{{panier|length}}{{"panier.produitnom"|trans}}</td>
+		{# pour avoir le total des différents produits #}
+		<td>{{'panier.total'|trans}}
+			{{ price_total}}€</td>
+		{# Pour activer l'état du produit si il a été acheté #}
+		{% if state == 0 %}
+			<td>
+				<a type="button" class="btn btn-success" href="{{path('panier_acheter')}}">{{'panier.pouracheter'|trans}}</a>
+			</td>
+		{% elseif state == 1 %}
+			<td>
+				<a type="button" class="btn btn-secondary disabled" href="{{path('panier_acheter')}}">{{'panier.dejaacheter'|trans}}</a>
+			</td>
+		{% endif %}
+	</table>
+	{# Si il n'y a pas de produit dans le panier #}
+{% else %}
+	<p>{{'panier.noproduit'|trans}}</p>
+</table>{% endif %}</div>{% endblock %}
